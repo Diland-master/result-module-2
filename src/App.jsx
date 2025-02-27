@@ -29,13 +29,13 @@ export const App = () => {
 		<div className={styles.container}>
 			<div className={styles.card}>
 				<h1>Инструкция по готовке пельменей</h1>
-				<div className={styles.steps}>
-					<div className={styles["steps-content"]}>
-						{steps[activeIndex].content}
-					</div>
-					<ul className={styles["steps-list"]}>
-						{steps.length > 0 &&
-							steps.map((step, index) => (
+				{steps.length > 0 && (
+					<div className={styles.steps}>
+						<div className={styles["steps-content"]}>
+							{steps[activeIndex].content}
+						</div>
+						<ul className={styles["steps-list"]}>
+							{steps.map((step, index) => (
 								<li
 									key={step.id}
 									className={
@@ -53,23 +53,24 @@ export const App = () => {
 									{step.title}
 								</li>
 							))}
-					</ul>
-					<div className={styles["buttons-container"]}>
-						<button
-							className={styles.button}
-							onClick={handleClickBack}
-							disabled={isFirstStep}
-						>
-							Назад
-						</button>
-						<button
-							className={styles.button}
-							onClick={isLastStep ? handleClickReset : handleClickNext}
-						>
-							{isLastStep ? "Начать сначала" : "Далее"}
-						</button>
+						</ul>
+						<div className={styles["buttons-container"]}>
+							<button
+								className={styles.button}
+								onClick={handleClickBack}
+								disabled={isFirstStep}
+							>
+								Назад
+							</button>
+							<button
+								className={styles.button}
+								onClick={isLastStep ? handleClickReset : handleClickNext}
+							>
+								{isLastStep ? "Начать сначала" : "Далее"}
+							</button>
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	);
